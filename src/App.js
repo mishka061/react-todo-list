@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import './styles/App.css'
-import TodoItem from "./component/TodoItem";
+
+import TodoList from "./component/TodoList";
 
 function App() {
     const [todo, setTodo] = useState([
@@ -10,10 +11,7 @@ function App() {
     ])
     return (
         <div className="App">
-            <h1>Список дел</h1>
-            {todo.map((todo )=>
-                <TodoItem todo={todo} key={todo.id}/>
-            )}
+            <TodoList todo={todo} title="Список постов"/>
 
         </div>
     );
