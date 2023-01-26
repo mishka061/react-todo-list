@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useRef, useState} from "react";
 import './styles/App.css'
 
 import TodoList from "./component/TodoList";
@@ -13,14 +13,22 @@ function App() {
     ])
 
     const [title, setTitle] = useState('')
+    const [body, setBody] = useState('')
+
     const addNewTodo = (e) => {
         e.preventDefault()
-        console.log(title)
+        const newTodo = {
+            id: Date.now(),
+            title,
+            body
+        }
+        setTodo([...todo, newTodo])
     }
 
     return (
         <div className="App">
             <form>
+                {/* Управляемый компонент*/}
                 <MyInput
                     value={title}
                     onChange={e => setTitle(e.target.value)}
@@ -28,6 +36,8 @@ function App() {
                     placeholder="Название дела"
                 />
                 <MyInput
+                    value={body}
+                    onChange={e => setBody(e.target.value)}
                     type="text"
                     placeholder="Описание дела"
                 />
