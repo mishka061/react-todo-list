@@ -11,6 +11,11 @@ function App() {
     ])
     return (
         <div className="App">
+            <form>
+                <input type="text" placeholder="Название дела"/>
+                <input type="text" placeholder="Описание дела"/>
+                <button>Создать запись</button>
+            </form>
             <TodoList todo={todo} title="Список постов"/>
 
         </div>
