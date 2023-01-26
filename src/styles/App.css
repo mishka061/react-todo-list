@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#root {
+    display: flex;
+    justify-content: center;
+}
+
+.App {
+    width: 800px;
+}
+
+.todo {
+    display: flex;
+    padding: 15px;
+    border: 2px solid teal;
+    margin-top: 15px;
+    justify-content: space-between;
+    align-items: center;
+}
+.todo-enter {
+    transform: translateX(-350px);
+}
+
+.todo-enter-active {
+    transform: translateX(0px);
+    transition: all 500ms ease-in;
+}
+
+.todo-exit {
+    opacity: 1;
+}
+
+.todo-exit-active {
+    transform: translateX(-350px);
+    transition: all 500ms ease-in;
+}
