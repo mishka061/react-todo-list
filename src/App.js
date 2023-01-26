@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import './styles/App.css'
 
 import TodoList from "./component/TodoList";
+import MyButton from "./component/UI/button/MyButton";
+import MyInput from "./component/UI/input/MyInput";
 
 function App() {
     const [todo, setTodo] = useState([
@@ -12,9 +14,9 @@ function App() {
     return (
         <div className="App">
             <form>
-                <input type="text" placeholder="Название дела"/>
-                <input type="text" placeholder="Описание дела"/>
-                <button>Создать запись</button>
+                <MyInput type="text" placeholder="Название дела"/>
+                <MyInput type="text" placeholder="Описание дела"/>
+                <MyButton>Создать запись</MyButton>
             </form>
             <TodoList todo={todo} title="Список постов"/>
 
