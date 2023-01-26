@@ -11,12 +11,31 @@ function App() {
         {id: 2, title: 'список дел', body: 'Description'},
         {id: 3, title: 'список дел', body: 'Description'},
     ])
+
+    const [title, setTitle] = useState('')
+    const addNewTodo = (e) => {
+        e.preventDefault()
+        console.log(title)
+    }
+
     return (
         <div className="App">
             <form>
-                <MyInput type="text" placeholder="Название дела"/>
-                <MyInput type="text" placeholder="Описание дела"/>
-                <MyButton>Создать запись</MyButton>
+                <MyInput
+                    value={title}
+                    onChange={e => setTitle(e.target.value)}
+                    type="text"
+                    placeholder="Название дела"
+                />
+                <MyInput
+                    type="text"
+                    placeholder="Описание дела"
+                />
+                <MyButton
+                    onClick={addNewTodo}
+                >
+                    Создать запись
+                </MyButton>
             </form>
             <TodoList todo={todo} title="Список постов"/>
 
