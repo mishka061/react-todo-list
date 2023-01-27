@@ -1,9 +1,7 @@
-import React, {useRef, useState} from "react";
+import React, {useState} from "react";
 import './styles/App.css'
-
 import TodoList from "./component/TodoList";
-import MyButton from "./component/UI/button/MyButton";
-import MyInput from "./component/UI/input/MyInput";
+import TodoForm from "./component/TodoForm";
 
 function App() {
     const [todo, setTodo] = useState([
@@ -11,44 +9,25 @@ function App() {
         {id: 2, title: 'список дел', body: 'Description'},
         {id: 3, title: 'список дел', body: 'Description'},
     ])
-
-    const [title, setTitle] = useState('')
-    const [body, setBody] = useState('')
-
-    const addNewTodo = (e) => {
-        e.preventDefault()
-        const newTodo = {
-            id: Date.now(),
-            title,
-            body
-        }
+    const createTodo = (newTodo) => {
         setTodo([...todo, newTodo])
+    }
+
+    const removeTodo = (todos) => {
+        setTodo(todo.filter(t => t.id !== todos.id))
     }
 
     return (
         <div className="App">
-            <form>
-                {/* Управляемый компонент*/}
-                <MyInput
-                    value={title}
-                    onChange={e => setTitle(e.target.value)}
-                    type="text"
-                    placeholder="Название дела"
-                />
-                <MyInput
-                    value={body}
-                    onChange={e => setBody(e.target.value)}
-                    type="text"
-                    placeholder="Описание дела"
-                />
-                <MyButton
-                    onClick={addNewTodo}
-                >
-                    Создать запись
-                </MyButton>
-            </form>
-            <TodoList todo={todo} title="Список постов"/>
-
+            <TodoForm create={createTodo}></TodoForm>
+            {todo.length
+                ?
+                <TodoList remove={removeTodo} todo={todo} title="Список постов"/>
+                :
+                <h1 style={{textAlign: 'center'}}>
+                    Список не найден !
+                </h1>
+            }
         </div>
     );
 }
