@@ -2,7 +2,6 @@ import React from 'react';
 import MyButton from "./UI/button/MyButton";
 
 const TodoItem = (props) => {
-    console.log(props)
     return (
         <div className="todo">
             <div className="todo__content">
